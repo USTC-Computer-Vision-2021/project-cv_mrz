@@ -11,6 +11,36 @@
           本实验搜索红色卡车的方法是将待处理图片上的每个位置，依次与已经提取出来的卡车进行对比，利用范数计算误差（本实验采用一范数），找
       到误差最小的位置，即为搜索到卡车的位置，然后将卡车删除。
 ### 代码实现：
-
+    本实验是用matlab R2021a实现的，代码的核心是通过以下这个循环，搜索到红色卡车的位置删除，并进行缺口填充。
+    
+    for k=1:PictureSize-1
+        for i=0:im_len-C_len
+            for j=0:im_wid-C_wid
+                sum=0;
+                for m=1:C_len
+                    for n=1:C_wid
+                        sum=sum+abs(img{k}(i+m,j+n,1)-Car_R(m,n))+abs(img{k}(i+m,j+n,2)-Car_G(m,n))+abs(img{k}(i+m,j+n,3)-Car_B(m,n));
+                    end
+                end
+                if i==0 && j==0
+                    tabel_i=i;
+                    tabel_j=j;
+                    tabel_sum=sum;
+                elseif sum<tabel_sum
+                    tabel_i=i;
+                    tabel_j=j;
+                    tabel_sum=sum; 
+                end
+            end
+        end
+        for m=-5:C_len+30
+            for n=-20:C_wid+20
+                img{k}(tabel_i+m,tabel_j+n,1)=img{PictureSize}(tabel_i+m,tabel_j+n,1);
+                img{k}(tabel_i+m,tabel_j+n,2)=img{PictureSize}(tabel_i+m,tabel_j+n,2);
+                img{k}(tabel_i+m,tabel_j+n,3)=img{PictureSize}(tabel_i+m,tabel_j+n,3);
+            end
+        end
+    end
 ### 效果展示：
+          
 ### 运行说明：
