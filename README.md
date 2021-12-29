@@ -42,5 +42,5 @@
         end
     end
 ### 效果展示：
-          
+![image]( https://github.com/USTC-Computer-Vision-2021/project-cv_mrz/blob/main/原图.gif)
 ### 运行说明：
