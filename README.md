@@ -42,5 +42,11 @@
         end
     end
 ### 效果展示：
+原动画
+
 ![image]( https://github.com/USTC-Computer-Vision-2021/project-cv_mrz/blob/main/原图.gif)
+
+实验处理后的动画
+
+![image]( https://github.com/USTC-Computer-Vision-2021/project-cv_mrz/blob/main/实验结果.gif)
 ### 运行说明：
